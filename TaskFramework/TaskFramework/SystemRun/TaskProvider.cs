@@ -32,9 +32,9 @@ namespace TaskFramework.SystemRun
             try
             {
                 string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, GlobalConfig.TaskDLL, nodetask.TaskModel.Id.ToString());  //任务dll在节点service存放地址
-                string taskpath = Path.Combine(nodetask.TaskModel.TaskClassPath, nodetask.TaskModel.TaskClassNamespace);   //任务dll上传所在地址
+                string taskpath = Path.Combine(nodetask.TaskModel.TaskClassPath);   //任务dll上传所在地址
 
-                IOHelper.CopyDirectory(taskpath, filepath);
+                IOHelper.CopyDirectory(taskpath, filepath);  //复制
 
                 var appdomain = AppDomain.CreateDomain(Path.Combine(filepath, nodetask.TaskModel.TaskClassNamespace));
                 BaseTaskDLL taskdll = (BaseTaskDLL)appdomain.CreateInstanceFromAndUnwrap(Path.Combine(filepath, nodetask.TaskModel.TaskClassNamespace), nodetask.TaskModel.TaskClassNamespace);
