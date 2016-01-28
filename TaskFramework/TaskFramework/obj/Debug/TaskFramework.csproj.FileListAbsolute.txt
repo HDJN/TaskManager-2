@@ -1,0 +1,5 @@
+E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\bin\Debug\TaskFramework.dll
+E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\bin\Debug\TaskFramework.pdb
+E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\obj\Debug\TaskFramework.csprojResolveAssemblyReference.cache
+E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\obj\Debug\TaskFramework.dll
+E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\obj\Debug\TaskFramework.pdb
