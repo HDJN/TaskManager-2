@@ -9,9 +9,15 @@ namespace TaskFramework.SystemRun
 {
     public class TaskJob : IJob
     {
+        private object lock_node = new object();
         public void Execute(JobExecutionContext context)
         {
-            
+            string taskid = context.JobDetail.Name;
+            NodeTaskRuntimeInfo nodetask = TaskPool.Instance().Get(taskid);
+            lock (lock_node)
+            {
+                nodetask.TaskDLL.StartRun();
+            }
         }
     }
 }

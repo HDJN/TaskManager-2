@@ -23,8 +23,8 @@ namespace TaskFramework.SystemRun
         {
             NodeTaskRuntimeInfo nodetask = TaskPool.Instance().Get(taskid.ToString());
             if (nodetask != null)
-            { 
-                LogHelper.WriteInfo(""+taskid+"任务已经开启");
+            {
+                LogHelper.WriteInfo("" + taskid + "任务已经开启");
                 return false;
             }
             TaskDal taskdal = new TaskDal();
@@ -32,9 +32,9 @@ namespace TaskFramework.SystemRun
             try
             {
                 string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, GlobalConfig.TaskDLL, nodetask.TaskModel.Id.ToString());  //任务dll在节点service存放地址
-                string taskpath = Path.Combine(nodetask.TaskModel.TaskClassPath, nodetask.TaskModel.TaskClassNamespace);   //任务dll上传所在地址
+                string taskpath = Path.Combine(nodetask.TaskModel.TaskClassPath);   //任务dll上传所在地址
 
-                IOHelper.CopyDirectory(taskpath, filepath);
+                IOHelper.CopyDirectory(taskpath, filepath);  //复制
 
                 var appdomain = AppDomain.CreateDomain(Path.Combine(filepath, nodetask.TaskModel.TaskClassNamespace));
                 BaseTaskDLL taskdll = (BaseTaskDLL)appdomain.CreateInstanceFromAndUnwrap(Path.Combine(filepath, nodetask.TaskModel.TaskClassNamespace), nodetask.TaskModel.TaskClassNamespace);
@@ -51,6 +51,53 @@ namespace TaskFramework.SystemRun
                 LogHelper.WriteError(ex);
                 return false;
             }
+        }
+
+        public bool Stop(long taskid)
+        {
+            NodeTaskRuntimeInfo nodetask = TaskPool.Instance().Get(taskid.ToString());
+            if (nodetask == null)
+            {
+                LogHelper.WriteInfo("" + taskid + "任务没有在运行");
+                return false;
+            }
+            if (Dispose(taskid, nodetask))
+            {
+                try
+                {
+                    TaskDal taskdal = new TaskDal();
+                    TaskModel model = taskdal.GetById(GlobalConfig.TaskDataBaseConnectString, taskid.ToString());
+                    model.TaskState = 0;
+                    model.TaskStopTime = DateTime.Now;
+                    taskdal.EditTask(GlobalConfig.TaskDataBaseConnectString, model);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.WriteError(ex);
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        public bool Dispose(long taskid, NodeTaskRuntimeInfo nodetask)
+        {
+            if (nodetask != null && nodetask.Domain != null)
+            {
+                try
+                {
+                    TaskPool.Instance().Remove(taskid.ToString());
+                    AppDomain.Unload(nodetask.Domain);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.WriteError(ex);
+                    return false;
+                }
+            }
+            return false;
         }
     }
 }

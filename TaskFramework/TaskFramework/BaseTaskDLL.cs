@@ -7,17 +7,17 @@ using ZF.Log;
 
 namespace TaskFramework
 {
-    public class BaseTaskDLL : MarshalByRefObject, IDisposable
+    public abstract class BaseTaskDLL : MarshalByRefObject, IDisposable
     {
         public void StartRun()
         {
             Run();
             LogHelper.WriteInfo("BaseTaskDLL StartRun");
         }
-        public abstract void Run(); 
+        public abstract void Run();
         public void Dispose()
         {
-            throw new NotImplementedException();
+
         }
     }
 }
