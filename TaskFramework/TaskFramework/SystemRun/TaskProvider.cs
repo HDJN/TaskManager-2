@@ -21,24 +21,29 @@ namespace TaskFramework.SystemRun
         /// <returns></returns>
         public bool Start(long taskid)
         {
-            NodeTaskRuntimeInfo nodetask = TaskPool.Instance().Get(taskid.ToString());
-            if (nodetask != null)
-            {
-                LogHelper.WriteInfo("" + taskid + "任务已经开启");
-                return false;
-            }
-            TaskDal taskdal = new TaskDal();
-            nodetask.TaskModel = taskdal.GetById(GlobalConfig.TaskDataBaseConnectString, taskid.ToString());
+            LogHelper.WriteInfo("启动" + taskid + "任务");
             try
             {
+                NodeTaskRuntimeInfo nodetask = TaskPool.Instance().Get(taskid.ToString());
+                if (nodetask != null)
+                {
+                    LogHelper.WriteInfo("" + taskid + "任务已经开启");
+                    return false;
+                }
+                TaskDal taskdal = new TaskDal();
+                nodetask = new NodeTaskRuntimeInfo();
+                nodetask.TaskModel = taskdal.GetById(GlobalConfig.TaskDataBaseConnectString, taskid.ToString());
+                LogHelper.WriteInfo("开始复制dll");
                 string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, GlobalConfig.TaskDLL, nodetask.TaskModel.Id.ToString());  //任务dll在节点service存放地址
-                string taskpath = Path.Combine(nodetask.TaskModel.TaskClassPath);   //任务dll上传所在地址
+                IOHelper.CreateDirectory(filepath);
+                LogHelper.WriteInfo("任务dll上传所在地址:" + nodetask.TaskModel.TaskClassPath + "文件名:" + nodetask.TaskModel.TaskFileName);
 
-                IOHelper.CopyDirectory(taskpath, filepath);  //复制
+                IOHelper.CopyDirectory(nodetask.TaskModel.TaskClassPath, filepath);  //复制
 
                 var appdomain = AppDomain.CreateDomain(Path.Combine(filepath, nodetask.TaskModel.TaskClassNamespace));
-                BaseTaskDLL taskdll = (BaseTaskDLL)appdomain.CreateInstanceFromAndUnwrap(Path.Combine(filepath, nodetask.TaskModel.TaskClassNamespace), nodetask.TaskModel.TaskClassNamespace);
-
+                BaseTaskDLL taskdll = (BaseTaskDLL)appdomain.CreateInstanceFromAndUnwrap(Path.Combine(filepath, nodetask.TaskModel.TaskFileName), nodetask.TaskModel.TaskClassNamespace);
+                LogHelper.WriteInfo(taskdll);
+                taskdll.Run();
                 nodetask.TaskDLL = taskdll;
 
                 TaskPool.Instance().Add(taskid.ToString(), nodetask);

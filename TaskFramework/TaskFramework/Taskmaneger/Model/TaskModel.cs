@@ -25,6 +25,7 @@ namespace TaskFramework.Taskmaneger.Model
         /// </summary>
         public int TaskState { get; set; }
         public string TaskClassPath { get; set; }
+        public string TaskFileName { get; set; }
         public string TaskClassNamespace { get; set; }
 
         public static TaskModel CreateModel(DataRow dr)
@@ -77,6 +78,10 @@ namespace TaskFramework.Taskmaneger.Model
             if (dr.Table.Columns.Contains("TaskClassPath"))
             {
                 model.TaskClassPath = LibConvert.ObjToStr(dr["TaskClassPath"]);
+            }
+            if (dr.Table.Columns.Contains("TaskFileName"))
+            {
+                model.TaskFileName = LibConvert.ObjToStr(dr["TaskFileName"]);
             }
             if (dr.Table.Columns.Contains("TaskClassNamespace"))
             {

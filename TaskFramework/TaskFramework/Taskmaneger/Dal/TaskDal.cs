@@ -15,7 +15,7 @@ namespace TaskFramework.Taskmaneger.Dal
         public TaskModel GetById(string conn, string taskid)
         {
             TaskModel task = new TaskModel();
-            string sql = "SELECT Id,TaskName,TaskDescription,CategoryId,NodeId,TaskCreateTime,TaskUpdateTime,TaskStartTime,TaskStopTime,TaskCron,TaskState,TaskClassPath,TaskClassNamespace FROM Task WHERE Id=@taskid";
+            string sql = "SELECT Id,TaskName,TaskDescription,CategoryId,NodeId,TaskCreateTime,TaskUpdateTime,TaskStartTime,TaskStopTime,TaskCron,TaskState,TaskClassPath,TaskFileName,TaskClassNamespace FROM Task WHERE Id=@taskid";
             SqlParameter[] parameters = new SqlParameter[] { new SqlParameter("@taskid", taskid) };
             DataTable dt = SqlServerHelper.Get(conn, sql, parameters);
             if (dt.Rows.Count > 0)
@@ -28,7 +28,7 @@ namespace TaskFramework.Taskmaneger.Dal
         public List<TaskModel> List(string conn)
         {
             List<TaskModel> list = new List<TaskModel>();
-            string sql = "SELECT Id,TaskName,TaskDescription,CategoryId,NodeId,TaskCreateTime,TaskUpdateTime,TaskStartTime,TaskStopTime,TaskCron,TaskState,TaskClassPath,TaskClassNamespace FROM Task";
+            string sql = "SELECT Id,TaskName,TaskDescription,CategoryId,NodeId,TaskCreateTime,TaskUpdateTime,TaskStartTime,TaskStopTime,TaskCron,TaskState,TaskClassPath,TaskFileName,TaskClassNamespace FROM Task";
             DataTable dt = SqlServerHelper.Get(conn, sql);
             if (dt.Rows.Count > 0)
             {
@@ -44,7 +44,7 @@ namespace TaskFramework.Taskmaneger.Dal
 
         public void AddTask(string conn, TaskModel model)
         {
-            string sql = @"INSERT INTO Task (TaskName,TaskDescription,CategoryId,NodeId,TaskCreateTime,TaskUpdateTime,TaskStartTime,TaskStopTime,TaskCron,TaskState,TaskClassPath,TaskClassNamespace)
+            string sql = @"INSERT INTO Task (TaskName,TaskDescription,CategoryId,NodeId,TaskCreateTime,TaskUpdateTime,TaskStartTime,TaskStopTime,TaskCron,TaskState,TaskClassPath,TaskFileName,TaskClassNamespace)
                          VALUES(@name
                                ,@description
                                ,@categoryid
@@ -56,6 +56,7 @@ namespace TaskFramework.Taskmaneger.Dal
                                ,@cron
                                ,@state
                                ,@classpath
+                               ,@filename
                                ,@classnamespace)";
             SqlParameter[] paramters = new SqlParameter[]
             {
@@ -70,6 +71,7 @@ namespace TaskFramework.Taskmaneger.Dal
                 new SqlParameter("@cron",model.TaskCron),
                 new SqlParameter("@state",model.TaskState),
                 new SqlParameter("@classpath",model.TaskClassPath),
+                new SqlParameter("@filename",model.TaskFileName),
                 new SqlParameter("@classnamespace",model.TaskClassNamespace)
             };
             SqlServerHelper.ExecuteNonQuery(conn, sql, paramters);
@@ -85,6 +87,7 @@ namespace TaskFramework.Taskmaneger.Dal
                               ,TaskUpdateTime = @updatetime
                               ,TaskCron=@cron
                               ,TaskClassPath = @classpath
+                              ,TaskFileName=@filename
                               ,TaskClassNamespace = @namespace WHERE Id = @id";
             SqlParameter[] paramters = new SqlParameter[]
             {
@@ -95,6 +98,7 @@ namespace TaskFramework.Taskmaneger.Dal
                 new SqlParameter("@updatetime",model.TaskUpdateTime),
                 new SqlParameter("@cron",model.TaskCron),
                 new SqlParameter("@classpath",model.TaskClassPath),
+                new SqlParameter("@filename",model.TaskFileName),
                 new SqlParameter("@namespace",model.TaskClassNamespace),
                 new SqlParameter("@id",model.Id)
             };

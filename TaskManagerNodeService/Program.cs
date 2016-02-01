@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
+using ZF.Log;
 
 namespace TaskManagerNodeService
 {
@@ -14,10 +15,11 @@ namespace TaskManagerNodeService
         /// </summary>
         static void Main()
         {
+            LogHelper.Configure();
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[] 
             { 
-                new Service1() 
+                new NodeService1() 
             };
             ServiceBase.Run(ServicesToRun);
         }

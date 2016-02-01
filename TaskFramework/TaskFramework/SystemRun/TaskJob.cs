@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Quartz;
+using ZF.Log;
 
 namespace TaskFramework.SystemRun
 {
@@ -16,6 +17,8 @@ namespace TaskFramework.SystemRun
             NodeTaskRuntimeInfo nodetask = TaskPool.Instance().Get(taskid);
             lock (lock_node)
             {
+                LogHelper.WriteDebug("准备运行一次:" + nodetask.TaskDLL.GetType().ToString());
+                nodetask.TaskDLL.Run();
                 nodetask.TaskDLL.StartRun();
             }
         }

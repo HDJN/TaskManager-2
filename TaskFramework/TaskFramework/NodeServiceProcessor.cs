@@ -31,6 +31,7 @@ namespace TaskFramework
         /// </summary>
         private static void ReceiveCommandLoop()
         {
+            LogHelper.WriteInfo("准备接收消息");
             RabbitMQModel model = new RabbitMQModel();
             model.HostName = "localhost";
             model.UserName = "guest";
@@ -40,6 +41,7 @@ namespace TaskFramework
             {
                 if (!string.IsNullOrEmpty(c))
                 {
+                    LogHelper.WriteInfo("接收消息" + c);
                     Command cmd = LibJsonConvert.DeserializeObject<Command>(c);
                     CommandFactory.Execute(cmd);
                 }

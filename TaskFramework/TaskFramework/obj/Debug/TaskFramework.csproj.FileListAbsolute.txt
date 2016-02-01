@@ -1,7 +1,6 @@
 E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\bin\Debug\TaskFramework.dll
 E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\bin\Debug\TaskFramework.pdb
-E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\obj\Debug\TaskFramework.dll
-E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\obj\Debug\TaskFramework.pdb
+E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\bin\Debug\Common.Logging.dll
 E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\bin\Debug\Quartz.dll
 E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\bin\Debug\ZF.dll
 E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\bin\Debug\log4net.dll
@@ -14,3 +13,5 @@ E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\bin\Debug\ServiceStack
 E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\bin\Debug\ZF.pdb
 E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\bin\Debug\Newtonsoft.Json.xml
 E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\bin\Debug\RabbitMQ.Client.xml
+E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\obj\Debug\TaskFramework.dll
+E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\obj\Debug\TaskFramework.pdb

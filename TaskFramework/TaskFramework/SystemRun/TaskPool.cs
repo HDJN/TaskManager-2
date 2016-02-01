@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Quartz;
 using Quartz.Impl;
+using ZF.Log;
 
 namespace TaskFramework.SystemRun
 {
@@ -47,9 +48,13 @@ namespace TaskFramework.SystemRun
                 if (!TaskRuntimePool.ContainsKey(taskid))
                 {
                     JobDetail job1 = new JobDetail(taskid, nodetask.TaskModel.CategoryId.ToString(), typeof(TaskJob));
-                    Trigger triger1 = TriggerFactory.Create(nodetask);
 
-                    _ische.ScheduleJob(job1, triger1);
+                    CronTrigger triger = new CronTrigger(nodetask.TaskModel.Id.ToString(), nodetask.TaskModel.CategoryId.ToString());
+                    //triger.CronExpressionString = nodetask.TaskModel.TaskCron;
+                    triger.CronExpressionString = "0/10 * * * * ?";
+                    //Trigger triger1 = TriggerFactory.Create(nodetask);
+                    LogHelper.WriteInfo("TaskCron:" + nodetask.TaskModel.TaskCron);
+                    _ische.ScheduleJob(job1, triger);
                     TaskRuntimePool.Add(taskid, nodetask);
                     return true;
                 }

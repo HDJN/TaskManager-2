@@ -17,16 +17,18 @@ namespace TaskFramework.SystemRun
         /// <param name="commandInfo"></param>
         public static void Execute(Command commandInfo)
         {
+            LogHelper.WriteInfo("Execute" + commandInfo.CommandType.ToString());
             switch (commandInfo.CommandType)
             {
-                case CommandType.Start: break;
-                case CommandType.Stop: break;
+                case CommandType.Start: StartTask(commandInfo); break;
+                case CommandType.Stop: StopTask(commandInfo); break;
                 default: LogHelper.WriteInfo("" + commandInfo.Id + "未识别的命令"); break;
             }
         }
 
         private static void StartTask(Command cmd)
         {
+            LogHelper.WriteInfo("开始启动任务");
             TaskProvider tp = new TaskProvider();
             tp.Start(cmd.TaskId);
         }

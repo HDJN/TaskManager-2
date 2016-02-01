@@ -52,7 +52,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common.cs" />
     <Compile Include="NodeService1.cs">
       <SubType>Component</SubType>
     </Compile>

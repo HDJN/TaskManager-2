@@ -9,6 +9,7 @@ E:\zhengwc\Github\TaskManager\TaskManagerNodeService\bin\Debug\ServiceStack.Inte
 E:\zhengwc\Github\TaskManager\TaskManagerNodeService\bin\Debug\Newtonsoft.Json.dll
 E:\zhengwc\Github\TaskManager\TaskManagerNodeService\bin\Debug\RabbitMQ.Client.dll
 E:\zhengwc\Github\TaskManager\TaskManagerNodeService\bin\Debug\ServiceStack.Redis.dll
+E:\zhengwc\Github\TaskManager\TaskManagerNodeService\bin\Debug\Common.Logging.dll
 E:\zhengwc\Github\TaskManager\TaskManagerNodeService\bin\Debug\ServiceStack.Text.dll
 E:\zhengwc\Github\TaskManager\TaskManagerNodeService\bin\Debug\ServiceStack.Common.dll
 E:\zhengwc\Github\TaskManager\TaskManagerNodeService\bin\Debug\TaskFramework.pdb
