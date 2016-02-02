@@ -1,3 +1,4 @@
+E:\zhengwc\Github\TaskManager\Task1\bin\Debug\Task1.dll.config
 E:\zhengwc\Github\TaskManager\Task1\bin\Debug\Task1.dll
 E:\zhengwc\Github\TaskManager\Task1\bin\Debug\Task1.pdb
 E:\zhengwc\Github\TaskManager\Task1\bin\Debug\TaskFramework.dll
@@ -15,6 +16,5 @@ E:\zhengwc\Github\TaskManager\Task1\bin\Debug\TaskFramework.pdb
 E:\zhengwc\Github\TaskManager\Task1\bin\Debug\ZF.pdb
 E:\zhengwc\Github\TaskManager\Task1\bin\Debug\Newtonsoft.Json.xml
 E:\zhengwc\Github\TaskManager\Task1\bin\Debug\RabbitMQ.Client.xml
-E:\zhengwc\Github\TaskManager\Task1\obj\Debug\Task1.csprojResolveAssemblyReference.cache
 E:\zhengwc\Github\TaskManager\Task1\obj\Debug\Task1.dll
 E:\zhengwc\Github\TaskManager\Task1\obj\Debug\Task1.pdb

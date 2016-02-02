@@ -14,7 +14,7 @@ namespace Task1
     {
         public override void Run()
         {
-            LogHelper.WriteDebug("MissionOne运行一次");
+            IOHelper.Write("E:\\test.txt", DateTime.Now.ToString());
         }
     }
 }

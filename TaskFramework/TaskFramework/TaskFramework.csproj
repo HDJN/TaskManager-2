@@ -57,6 +57,7 @@
     <Compile Include="SystemRun\CommandFactory.cs" />
     <Compile Include="SystemRun\NodeTaskRuntimeInfo.cs" />
     <Compile Include="SystemRun\TaskJob.cs" />
+    <Compile Include="SystemRun\TaskLock.cs" />
     <Compile Include="SystemRun\TaskPool.cs" />
     <Compile Include="SystemRun\TaskProvider.cs" />
     <Compile Include="SystemRun\TriggerFactory.cs" />

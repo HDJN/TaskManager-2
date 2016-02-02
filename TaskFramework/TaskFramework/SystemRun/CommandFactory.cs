@@ -17,7 +17,6 @@ namespace TaskFramework.SystemRun
         /// <param name="commandInfo"></param>
         public static void Execute(Command commandInfo)
         {
-            LogHelper.WriteInfo("Execute" + commandInfo.CommandType.ToString());
             switch (commandInfo.CommandType)
             {
                 case CommandType.Start: StartTask(commandInfo); break;
@@ -28,7 +27,6 @@ namespace TaskFramework.SystemRun
 
         private static void StartTask(Command cmd)
         {
-            LogHelper.WriteInfo("开始启动任务");
             TaskProvider tp = new TaskProvider();
             tp.Start(cmd.TaskId);
         }

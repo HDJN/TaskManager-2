@@ -15,3 +15,4 @@ E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\bin\Debug\Newtonsoft.J
 E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\bin\Debug\RabbitMQ.Client.xml
 E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\obj\Debug\TaskFramework.dll
 E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\obj\Debug\TaskFramework.pdb
+E:\zhengwc\Github\TaskManager\TaskFramework\TaskFramework\obj\Debug\TaskFramework.csprojResolveAssemblyReference.cache

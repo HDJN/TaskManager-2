@@ -47,6 +47,7 @@ namespace TaskFramework.SystemRun
             {
                 if (!TaskRuntimePool.ContainsKey(taskid))
                 {
+                    LogHelper.WriteInfo("加载taskJob");
                     JobDetail job1 = new JobDetail(taskid, nodetask.TaskModel.CategoryId.ToString(), typeof(TaskJob));
 
                     CronTrigger triger = new CronTrigger(nodetask.TaskModel.Id.ToString(), nodetask.TaskModel.CategoryId.ToString());

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZF.IOHelper;
 using ZF.Log;
 
 namespace Task1
@@ -12,7 +13,6 @@ namespace Task1
         public void StartRun()
         {
             Run();
-            LogHelper.WriteInfo("BaseTaskDLL StartRun");
         }
         public abstract void Run();
         public void Dispose()
@@ -25,7 +25,7 @@ namespace Task1
 
         public override void Run()
         {
-            LogHelper.WriteInfo("运行一次");
+            IOHelper.Write("E:\\test.txt", "运行一次");
         }
     }
 }

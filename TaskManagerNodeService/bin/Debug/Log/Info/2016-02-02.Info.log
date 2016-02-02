@@ -1,0 +1,128 @@
+
+
+
+ 记录时间：2016-02-02 15:01:58,749 
+日志级别：  INFO  
+出错类：Log  
+错误描述：服务启动 
+
+
+
+
+ 记录时间：2016-02-02 15:01:58,797 
+日志级别：  INFO  
+出错类：Log  
+错误描述：准备接收消息 
+
+
+
+
+ 记录时间：2016-02-02 15:02:02,788 
+日志级别：  INFO  
+出错类：Log  
+错误描述：接收消息{"Id":1,"TaskId":5,"NodeId":1,"CommandType":1,"CreateTime":"2016-02-02T15:02:02.7689761+08:00","State":0} 
+
+
+
+
+ 记录时间：2016-02-02 15:02:02,900 
+日志级别：  INFO  
+出错类：Log  
+错误描述：启动5任务 
+
+
+
+
+ 记录时间：2016-02-02 15:02:03,003 
+日志级别：  INFO  
+出错类：Log  
+错误描述：加载taskJob 
+
+
+
+
+ 记录时间：2016-02-02 15:02:03,012 
+日志级别：  INFO  
+出错类：Log  
+错误描述：TaskCron:0/10 * * * * ? 
+
+
+
+
+ 记录时间：2016-02-02 15:02:03,021 
+日志级别：  INFO  
+出错类：Log  
+错误描述：节点开启成功 
+
+
+
+
+ 记录时间：2016-02-02 15:02:10,030 
+日志级别：  INFO  
+出错类：Log  
+错误描述：TaskJob运行Execute;context.JobDetail.Name5nodetaskTaskFramework.SystemRun.NodeTaskRuntimeInfo 
+
+
+
+
+ 记录时间：2016-02-02 15:02:20,003 
+日志级别：  INFO  
+出错类：Log  
+错误描述：TaskJob运行Execute;context.JobDetail.Name5nodetaskTaskFramework.SystemRun.NodeTaskRuntimeInfo 
+
+
+
+
+ 记录时间：2016-02-02 15:02:30,003 
+日志级别：  INFO  
+出错类：Log  
+错误描述：TaskJob运行Execute;context.JobDetail.Name5nodetaskTaskFramework.SystemRun.NodeTaskRuntimeInfo 
+
+
+
+
+ 记录时间：2016-02-02 15:02:40,003 
+日志级别：  INFO  
+出错类：Log  
+错误描述：TaskJob运行Execute;context.JobDetail.Name5nodetaskTaskFramework.SystemRun.NodeTaskRuntimeInfo 
+
+
+
+
+ 记录时间：2016-02-02 15:02:50,003 
+日志级别：  INFO  
+出错类：Log  
+错误描述：TaskJob运行Execute;context.JobDetail.Name5nodetaskTaskFramework.SystemRun.NodeTaskRuntimeInfo 
+
+
+
+
+ 记录时间：2016-02-02 15:02:50,809 
+日志级别：  INFO  
+出错类：Log  
+错误描述：服务结束 
+
+
+
+
+ 记录时间：2016-02-02 15:03:00,003 
+日志级别：  INFO  
+出错类：Log  
+错误描述：TaskJob运行Execute;context.JobDetail.Name5nodetaskTaskFramework.SystemRun.NodeTaskRuntimeInfo 
+
+
+
+
+ 记录时间：2016-02-02 15:03:10,003 
+日志级别：  INFO  
+出错类：Log  
+错误描述：TaskJob运行Execute;context.JobDetail.Name5nodetaskTaskFramework.SystemRun.NodeTaskRuntimeInfo 
+
+
+
+
+ 记录时间：2016-02-02 15:03:20,003 
+日志级别：  INFO  
+出错类：Log  
+错误描述：TaskJob运行Execute;context.JobDetail.Name5nodetaskTaskFramework.SystemRun.NodeTaskRuntimeInfo 
+

@@ -15,12 +15,23 @@ namespace TaskFramework.SystemRun
         {
             string taskid = context.JobDetail.Name;
             NodeTaskRuntimeInfo nodetask = TaskPool.Instance().Get(taskid);
-            lock (lock_node)
+            LogHelper.WriteInfo("TaskJob运行Execute;context.JobDetail.Name" + context.JobDetail.Name + "nodetask" + nodetask);
+            nodetask.Tasklock.Invoke(() =>
             {
-                LogHelper.WriteDebug("准备运行一次:" + nodetask.TaskDLL.GetType().ToString());
-                nodetask.TaskDLL.Run();
-                nodetask.TaskDLL.StartRun();
-            }
+                try
+                {
+                    nodetask.TaskDLL.StartRun();
+                }
+                catch (Exception exp)
+                {
+                    LogHelper.WriteError("任务" + taskid + "TaskJob回调时执行失败");
+                }
+            });
+            //lock (lock_node)
+            //{
+            //    LogHelper.WriteDebug("准备运行一次:" + nodetask.TaskDLL.GetType().ToString());
+            //    //nodetask.TaskDLL.StartRun();
+            //}
         }
     }
 }

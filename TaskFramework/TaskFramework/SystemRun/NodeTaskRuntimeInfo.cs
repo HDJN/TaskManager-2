@@ -28,6 +28,8 @@ namespace TaskFramework.SystemRun
         /// 应用程序域中任务dll实例引用
         /// </summary>
         public BaseTaskDLL TaskDLL;
+
+        public TaskLock Tasklock;
         
     }
 }
