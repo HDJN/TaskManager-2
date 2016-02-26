@@ -7,6 +7,7 @@ using TaskFramework.Taskmaneger.Dal;
 using TaskFramework.Taskmaneger.Model;
 using ZF.Log;
 using ZF.IOHelper;
+using ZF.DeCompression;
 using System.IO;
 using System.Reflection;
 
@@ -35,13 +36,12 @@ namespace TaskFramework.SystemRun
                 nodetask.Tasklock = new TaskLock();
                 nodetask.TaskModel = taskdal.GetById(GlobalConfig.TaskDataBaseConnectString, taskid.ToString());
                 string filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, GlobalConfig.TaskDLL, nodetask.TaskModel.Id.ToString());  //任务dll在节点service存放地址
-                //IOHelper.CreateDirectory(filepath);
-                //IOHelper.CopyDirectory(nodetask.TaskModel.TaskClassPath, filepath);  //复制
+                string srcpath = Path.Combine(nodetask.TaskModel.TaskClassPath, nodetask.TaskModel.TaskFileName);
+                DeCompressionHelper.UnCompress(srcpath, filepath);
 
                 AppDomainSetup setup = new AppDomainSetup();
                 setup.ShadowCopyFiles = "true";
                 setup.ApplicationBase = System.IO.Path.GetDirectoryName(filepath);
-                //var appdomain = AppDomain.CreateDomain(System.IO.Path.GetDirectoryName(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "lib", "Task1")), null, setup);
 
                 var appdomain = AppDomain.CreateDomain(Path.Combine(filepath, nodetask.TaskModel.TaskClassNamespace), null, setup);
                 BaseTaskDLL taskdll = (BaseTaskDLL)appdomain.CreateInstanceFromAndUnwrap(Path.Combine(filepath, nodetask.TaskModel.TaskFileName), nodetask.TaskModel.TaskClassNamespace);

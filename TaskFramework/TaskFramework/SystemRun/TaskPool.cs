@@ -51,8 +51,8 @@ namespace TaskFramework.SystemRun
                     JobDetail job1 = new JobDetail(taskid, nodetask.TaskModel.CategoryId.ToString(), typeof(TaskJob));
 
                     CronTrigger triger = new CronTrigger(nodetask.TaskModel.Id.ToString(), nodetask.TaskModel.CategoryId.ToString());
-                    //triger.CronExpressionString = nodetask.TaskModel.TaskCron;
-                    triger.CronExpressionString = "0/10 * * * * ?";
+                    //triger.CronExpressionString = "0/10 * * * * ?";
+                    triger.CronExpressionString = nodetask.TaskModel.TaskCron;
                     //Trigger triger1 = TriggerFactory.Create(nodetask);
                     LogHelper.WriteInfo("TaskCron:" + nodetask.TaskModel.TaskCron);
                     _ische.ScheduleJob(job1, triger);
